@@ -1,3 +1,8 @@
+
+/*
+TODO: replace alert by using console.log() function
+
+*/
 function makeArmy() {
 		let shooters = [];
 		for(let i=0;i < 10;i++) {
