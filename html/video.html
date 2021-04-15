@@ -1,0 +1,126 @@
+<DOCTYPE html>
+<html>
+<head>
+	<style type="text/css" >li{font-weight:lighter;}
+	</style>
+	<link rel="icon" href="..\image\icon\pie.ico"type="image/x-icon"/>
+	<link rel="stylesheet"type="text/css"href="../css/style_video.css"/>
+	<title>Video</title>
+</head>
+<body>
+	<header>
+		<div class="column">
+			<div class="image">
+				<img src="../image/logo/logo.png"width="100">
+			</div>
+		</div>	
+				<div class="text_name">Druzhba</div><br>				
+		<div class="dropdown">
+			<div class="dropdown_1">
+			<button class="dropbtn_1 dropbtn">Состав</button>
+				<div class="dropdown-content_1">
+					<a href="C:\Users\Ва\Desktop\сайт\sostav0506.html">2005-2006год</a>
+					<a href="..\html\new_sostav.html">2007-2008</a>
+				</div>
+			</div>	
+			<div class="dropdown_2">
+				<button class="dropbtn_2 dropbtn">Расписание</button>
+					<div class="dropdown-content_2">
+					<a href="..\html\raspisanie0506.html">2005-2006год</a>
+					<a href="..\html\raspisanie0708.html">2007-2008год</a>
+				</div>
+			</div>
+			<div class="dropdown_3">
+				<button class="dropbtn_3 dropbtn">Соревнования</button>
+					<div class="dropdown-content_3">
+					<a href="http://www.fhu.com.ua/index.php/dityacho-yunatskij-khokej.html">Чемпионат Украины</a>
+				</div>
+			</div>
+			<div class="dropdown_4">
+				<button class="dropbtn_4 dropbtn">Видео</button>
+					<div class="dropdown-content_4">
+				</div>
+			</div>
+			<div class="dropdown_5">
+				<button class="dropbtn_5 dropbtn">Контакты</button>
+					<div class="dropdown-content_5">
+					<a href="C:\Users\Ва\Desktop\сайт\Barankovskiy.html">Баранковський А.Н</a>
+				</div>
+			</div>
+			<div class="dropdown_6">
+			<button class="dropbtn_6 dropbtn">Новости</button>
+				<div class="dropdown-content_6">
+				<a href="C:\Users\Ва\Desktop\сайт\about.html"></a></div>
+			</div>
+		</div>
+	</div>
+	</header>
+	<body>
+		<h1>Видео</h1>
+			<p>	Уроки физкультуры</p>
+				<video onmouseover="playmyVideo(this);" onmouseout="stopped();"id="myVideo" >
+					<source src="..\video\Urok1.mp4" type="video/mp4">
+				</video>	 
+				<video  autoplay muted loop  id="myVideo">
+					<source src="..\video\Urok2.mp4" type="video/mp4">
+				</video>
+				<video  autoplay muted loop  id="myVideo">
+					<source src="..\video\Urok3.mp4" type="video/mp4">
+				</video>
+				<video  autoplay muted loop   id="myVideo">
+					<source src="..\video\Urok4.mp4" type="video/mp4">
+				</video>
+				<video  autoplay muted loop  id="myVideo">
+					<source src="..\video\Urok5.mp4" type="video/mp4">
+				</video>
+				<video  autoplay muted loop  id="myVideo">
+					<source src="..\video\Urok6.mp4" type="video/mp4">
+				</video>
+				<video  autoplay muted loop  id="myVideo">
+					<source src="..\video\Urok7.mp4" type="video/mp4">
+				</video>
+				<video  autoplay muted loop id="myVideo">
+					<source src="..\video\Urok8.mp4" type="video/mp4">
+				</video>
+				<video autoplay muted loop id="myVideo">
+					<source src="..\video\Urok9.mp4" type="video/mp4">
+				</video>
+				<video  autoplay muted loop   id="myVideo">
+					<source src="..\video\Urok10.mp4" type="video/mp4">
+				</video>
+				<script>
+				let video = document.getElementById("myVideo");
+				function playmyVideo(this)
+				{
+						this.play();
+					
+				}
+				function stopped()
+				{
+					if (video.onmouseup){
+						video.stop();
+						}
+				}		
+				</script>
+				
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</body>
+<html>
