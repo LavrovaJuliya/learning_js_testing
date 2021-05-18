@@ -34,7 +34,7 @@ function delay(f,ms){
 	//let f1500 = delay(f,10000);
 	//f1000("test1");
 	//f1500("test2");*/
-let user1={
+/*let user1={
 	name:"Ivan Ivanov",
 	bankaccount:100000,
 	get incom (){
@@ -46,9 +46,9 @@ let user1={
 	}	
 	
 };
-/*for(let entrie of Object.entries(user1)){
+for(let entrie of Object.entries(user1)){
 		console.log(entrie);
-};	*/
+};	
 
 console.log(user1.allinfo);
 
@@ -80,3 +80,74 @@ let user2={
 		console.log(entrie);
 };	
 */
+
+/*let head = {
+  glasses: 1
+};
+
+let table = {
+  pen: 3,
+  __proto__:head
+};
+
+let bed = {
+  sheet: 1,
+  pillow: 2,
+   __proto__:table
+  
+};
+
+let pockets = {
+  money: 2000,
+   __proto__:bed
+  
+};
+alert(pockets.pen);
+alert(bed.glasses);
+
+
+let hamster = {
+  stomach: [],
+
+  eat(food) {
+    this.stomach.push(food);
+  }
+};
+
+let speedy = {
+	stomach:[],
+  __proto__: hamster
+};
+
+let lazy = {
+	stomach:[],
+  __proto__: hamster
+};
+
+
+speedy.eat("apple");
+lazy.eat("banana");
+alert( speedy.stomach ); 
+alert( lazy.stomach );*/
+
+
+/*function Rabbit() {}
+Rabbit.prototype = {
+  eats: true
+}
+
+let rabbit = new Rabbit();
+//Rabbit.prototype = {};
+//Rabbit.prototype.eats = false;
+//delete rabbit.eats;
+//delete Rabbit.prototype.eats;
+alert( rabbit.eats );*/
+
+function Rabbit(name){
+	this.name = name;
+	alert(name);
+}
+
+let obj = new Rabbit("White");
+let obj2 = new obj.constructor("Black");
+debugger;
