@@ -143,11 +143,60 @@ let rabbit = new Rabbit();
 //delete Rabbit.prototype.eats;
 alert( rabbit.eats );*/
 
-function Rabbit(name){
+/*function Rabbit(name){
 	this.name = name;
 	alert(name);
 }
 
 let obj = new Rabbit("White");
 let obj2 = new obj.constructor("Black");
-debugger;
+debugger;*/
+/*Function.prototype.defer = function(ms){
+		setTimeout(this,ms);
+}
+function f() {
+  alert("Hello!");
+}
+
+f.defer(1000);*/
+
+/*Function.prototype.defer = function (ms){
+	f = this;
+	return function(){
+		return setTimeout(()=>f(...arguments),ms);
+	}
+}	
+	
+function f(a, b) {
+  alert( a + b );
+}
+
+f.defer(1000)(1, 2);*/	
+
+let dictionary = Object.create(null);
+Object.defineProperty(dictionary,"toString",{
+	value:function(){
+		return Object.keys(this).join(",");
+	},
+});	
+
+dictionary.apple = "Apple";
+dictionary.__proto__ = "test"; 
+for(let key in dictionary) {
+  alert(key);
+}
+alert(dictionary); 
+
+function Rabbit(name) {
+  this.name = name;
+}
+Rabbit.prototype.sayHi = function() {
+  alert(this.name);
+};
+
+let rabbit = new Rabbit("Rabbit");
+rabbit.sayHi();
+Rabbit.prototype.sayHi();
+Object.getPrototypeOf(rabbit).sayHi();
+rabbit.__proto__.sayHi();
+		
