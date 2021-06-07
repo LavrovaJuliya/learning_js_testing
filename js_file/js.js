@@ -173,7 +173,7 @@ function f(a, b) {
 
 f.defer(1000)(1, 2);*/	
 
-let dictionary = Object.create(null);
+/*let dictionary = Object.create(null);
 Object.defineProperty(dictionary,"toString",{
 	value:function(){
 		return Object.keys(this).join(",");
@@ -198,5 +198,170 @@ let rabbit = new Rabbit("Rabbit");
 rabbit.sayHi();
 Rabbit.prototype.sayHi();
 Object.getPrototypeOf(rabbit).sayHi();
-rabbit.__proto__.sayHi();
+rabbit.__proto__.sayHi();*/
+
+
+/*class Clock{
+	constructor(template){
+	this.template=template;
+	}
+	show(){
+		let date = new Date();
+		let hours = date.getHours();
+		if (hours<10){
+			hours = '0'+hours;
+		};
+		let  minutes = date.getMinutes();
+		if (minutes<10){
+			minutes = '0'+minutes;
+		};
+		let second  = date.getSeconds();
+		if (second<10){
+			second = '0'+second;
+		};
+		let output = this.template
+		.replace("h",hours)
+		.replace("m",minutes)
+		.replace("s",second);
+		console.log(output);
+		
+	}
+	start(){
+		this.show();
+		this.timer = setInterval(()=>this.show(),1000);
+	}
+}
+let clock = new Clock('h-m-s');
+clock.start();
+
+class ExtendedClock extends Clock {
+  constructor(template='h-m-s',precision=1000) {
+    super(template);
+    this.precision = precision;
+  }
+
+  start() {
+    this.show();
+    this.timer = setInterval(() => this.show(),this.precision);
+  }
+}
+alert();
+let modernClock = new ExtendedClock();
+modernClock.start();*/
+
+/*class Rabbit extends Object {
+  constructor(name) {
+	super();
+    this.name = name;
+  }
+}
+
+let rabbit = new Rabbit("Кроль");
+
+alert( rabbit.hasOwnProperty('name') )*/
+/*class Worker{
+
+	constructor(name,surname){
+		this.#name = name;
+		this.#surname = surname;
+		this.#rate = 0;
+		this.#days = 0;
+	}
+	#name;
+	#surname;
+	#rate;
+	#days;
+	getName(){
+		return this.#name;
+	}
+	getSurname(){
+		return this.#surname;
+	} 
+	getRate(){
+		return this.#rate;
+	}
+	setRate(value){
+		this.#rate = value;
+	}
+	getDays(){
+		return this.#days;
+	}
+	setDays (value){
+		this.#days = value;
+	}
+	getSalary(){
+		return this.#days *this.#rate;
+	}
+}	
+	
+
+	let worker1 = new Worker('Иван','Иванов');
+	let worker2 = new Worker('Петр','Петров');
+	worker1.setRate(20);
+	worker1.setDays(10);
+	
+console.log(worker1.surname);
+console.log(worker1.rate);
+console.log(worker1.days);
+console.log(worker1.getSalary());
+console.log(worker2.name);
+console.log(worker2.surname);
+console.log(worker2.rate);
+console.log(worker2.days);
+console.log(worker1.getSalary());
+console.log(worker1.getSalary()+worker2.getSalary());*/
+/*class MyString{
+	revers(str){
+		return str.split("").reverse().join("");
+	}
+	ucFirst(str){
+		let newStr = str[0].toUpperCase() + str.slice(1);
+		return newStr;
+	}
+	
+}
+	let str1 = new MyString();
+	console.log(str1.revers("abcd"));
+	console.log(str1.ucFirst("abcd"));*/
+class Validator{
+	
+	isEmail(str){
+		let atpos = str.indexOf('@');
+		let dotpos = str.lastIndexOf('.');
+		if(atpos<1||dotpos-atpos<2){
+			return false;
+		}else{
+			return true;
+		}
+	} 
+	isDomain(str){
+		let arr = ['.ua','.com','.ru','.net','ac','su','tv','info','io','pw'];
+		for (let i =0;i<arr.length;i++){
+			if (str.indexOf(arr[i])!== -1){
+				return true;
+			}
+		}return false;
+	}
+	isDate(str){
+		let date = new Date(Date.parse(str));
+		if(date>0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	isPhone(str){
+		if(str.startsWith('380')&&Number(str)){
+			return true;
+		}return false;
+}	}
+let validator = new Validator();
+console.log (validator.isEmail('ulyamosienko@gmail.com'));
+console.log (validator.isDomain('fotkakharkovu.net'));
+console.log (validator.isDate('10.05.2020'));
+console.log (validator.isPhone('380683421jhg 0'));
+
+
+   
+
 		
