@@ -323,7 +323,7 @@ console.log(worker1.getSalary()+worker2.getSalary());*/
 	let str1 = new MyString();
 	console.log(str1.revers("abcd"));
 	console.log(str1.ucFirst("abcd"));*/
-class Validator{
+/*class Validator{
 	
 	isEmail(str){
 		let atpos = str.indexOf('@');
@@ -359,9 +359,206 @@ let validator = new Validator();
 console.log (validator.isEmail('ulyamosienko@gmail.com'));
 console.log (validator.isDomain('fotkakharkovu.net'));
 console.log (validator.isDate('10.05.2020'));
-console.log (validator.isPhone('380683421jhg 0'));
+console.log (validator.isPhone('380683421jhg 0'));*/
+/*function f(){
+	try {
+	alert('начать работу');
+	return 'result';
+	alert('');
+	} catch (e) {
+	alert('ошибка');
+	}
+	//alert('очистка');
+ finally {
+	alert('очистить рабочее пространство');
+	}
+}
+f();*/
+/*class FormatError extends SyntaxError{
+	constructor(message){
+		super(message);
+		this.name = ("FormatError");
+	}
+}
+let err = new FormatError("ошибка форматирования");
 
+alert( err.message );
+alert( err.name ); 
+alert( err.stack ); 
+alert( err instanceof FormatError ); 
+alert( err instanceof SyntaxError ); */
+/*function showCircle(cx,cy,radius){
+	let div = document.createElement("div");
+	div.style.width = 0;
+	div.style.height = 0;
+	div.style.right = cx +'px';
+	div.style.top = cy +'px';
+	div.className = 'circle';
+	console.log(document.body);
+	document.body.append(div);
+	setTimeout(()=>{
+		div.style.width = radius*2 +'px';
+		div.style.height = radius*2 + 'px';
+	
+		div.addEventListener('transitionend', function handler() {
+		div.removeEventListener('transitionend', handler);
+		callback(div);
+      });
+	});*/
+	/*return new Promise(resolve=>{
+		setTimeout(()=>{
+			div.style.width = radius*2 +'px';
+			div.style.height = radius*2 + 'px';
+			div.addEventListener('transitionend', function handler() {
+				div.removeEventListener('transitionend', handler);
+				resolve(div);
+			});
+			
+		});
+	})	
+}
+	function clickHandler(){
+		showCircle(150, 150, 100).then(div => {
+		div.classList.add('message-ball');
+		div.append("Hello, world!");
+		});
+	}
+	function delay(ms){
+		return new Promise(resolve=>setTimeout(resolve,ms));
+	}
 
-   
-
+	delay (3000).then(()=>alert("выполнилось через 3 секунды"));*/
+	
+	/*async function loadJson(url) {
+		let response = await fetch(url);
+			if (response.status == 200) {
+				let json = await response.json();
+				console.log(response);
+				return json;
+			}
+				throw new Error(response.status);
+			
 		
+	}
+	loadJson(`https://api.github.com/users/LavrovaJuliya`)
+		.then(function(json){
+			let id = json.id;
+			let id1 = json.login;
+			alert(id);
+			alert(id1);
+		})	
+		.catch(alert);*/
+	
+  
+  /*class HttpError extends Error {
+  constructor(response) {
+    super(`${response.status} for ${response.url}`);
+    this.name = 'HttpError';
+    this.response = response;
+  }
+}
+
+async function loadJson(url) {
+  let response = await fetch(url);
+    if (response.status == 200) {
+        return response.json();
+      } else {
+        throw new HttpError(response);
+      }
+    
+}
+
+async function demoGithubUser() {
+ while(true){
+	let name = prompt("Введите логин?", "iliakan");
+	try{
+		let user = await loadJson(`https://api.github.com/users/${name}`);
+		break;
+	}
+	catch(err){
+		if (err instanceof HttpError && err.response.status == 404) {
+			alert("Такого пользователя не существует, пожалуйста, повторите ввод.");
+		} else {
+			throw err;
+		}
+	}
+ }
+alert("Такого пользователя не существует, пожалуйста, повторите ввод.");
+return user; 
+}
+
+demoGithubUser();*/
+/*	function* pseudoRandom(seed){
+		value  = seed;
+		while(true){
+			value = value * 16807%2147483647
+			yield value;
+		}
+	}
+	let generator = pseudoRandom(1);
+
+	alert(generator.next().value); 
+	alert(generator.next().value);
+	alert(generator.next().value);*/
+	/*let user = {
+		name: "John"
+	};
+
+	function wrap(target) {
+		return new Proxy(target, {
+			get(target,prop){
+				if(prop in target){
+				 return target[prop];
+				}else{
+					throw new ReferenceError(`Свойство "${prop}" не существует`);
+					}
+			}
+		});
+	}
+
+	user = wrap(user);
+
+	alert(user.name);
+	alert(user.age); */
+
+	let array = [1, 2, 3];
+		array = new Proxy(array, {	
+			get(target,prop,receiver){
+				if(prop<0){
+				 prop = +prop + target.length;
+				}
+				return Reflect.get(target,prop,receiver);
+			}
+		});
+
+	alert( array[-1] ); // 3
+	alert( array[-2] ); // 2	
+	function makeObservable(target){
+		target.observe = function f(handler){
+			target.f = handler;
+		};
+		return new Proxy(target,{
+			set(targe,prop,value,receiver){
+				target.f(prop,value);
+				return Reflect.set(target,prop,value);
+			}
+		});
+
+	}	
+	let user = {};
+		user = makeObservable(user);
+
+		user.observe((key, value) => {
+		alert(`SET ${key}=${value}`);
+	});
+
+	user.name = "John";
+	alert(user.name);
+	let calc = prompt("Введите арифметическое выражение", "3*3+4");
+	alert(eval(calc));
+
+	let animals = ["тигр", "ёж", "енот", "ехидна", "АИСТ", "ЯК"];
+	let collator = new Intl.Collator();
+	alert( collator.compare(animals) );
+	animals.sort(collator.compare);
+	alert( animals );
